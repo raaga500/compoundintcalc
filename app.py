@@ -22,10 +22,12 @@ st.markdown("<h1 style='text-align: center;'>Compound Interest Calculator</h1>",
 with st.form("compound_interest_form"):
     P = float(st.text_input("**Principal Amount**",value=212000).strip())
     r = float(st.text_input("**Rate**",value=5.5).strip())/100
-    n = float(st.text_input("**How many times per year interest is applied**",value=1).strip())
-    t = int(st.text_input("**Length in Years**",value=10).strip())
+    n_key = st.selectbox("**How many times per year interest is applied**",("Monthly","Quarterly","Semi-Annually","Annually"))
+    t = st.slider("**Length in Years**",min_value=1,max_value=50,value=10,step=1)
     submitted = st.form_submit_button("**Submit**")
 
+n_dict = {"Monthly":12,"Quarterly":3,"Semi-Annually":2,"Annually":1}
+n = n_dict[n_key]
 
 amount = P*(1 + r/n)**(n*t)
 amount = round(amount,2)
