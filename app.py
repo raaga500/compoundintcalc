@@ -32,7 +32,7 @@ n = n_dict[n_key]
 amount = P*(1 + r/n)**(n*t)
 amount = round(amount,2)
 
-interest_earned = amount - P
+interest_earned = round(amount - P,2)
 
 #------Create empty result container  at the top of the page which will be populated after all the calcullations
 #Result container
